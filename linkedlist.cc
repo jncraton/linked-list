@@ -17,67 +17,16 @@ public:
   LinkedList() { head = nullptr; }
 
   void append(int data) {
-    if (head == nullptr) {
-      head = new Node(data);
-      return;
-    }
-
-    Node *cur = head;
-    while (cur->next != nullptr) {
-      cur = cur->next;
-    }
-
-    cur->next = new Node(data);
   }
 
   int get(int index) {
-    Node *cur = head;
-    if (cur == nullptr) {
-      throw std::out_of_range("Index out of bounds");
-    }
-    for (int i = 0; i < index; i++) {
-      if (cur->next == nullptr) {
-        throw std::out_of_range("Index out of bounds");
-      }
-      cur = cur->next;
-    }
-
-    return cur->data;
+    return 0;
   }
 
   void pop() {
-    if (head == nullptr) {
-      return;
-    }
-    if (head->next == nullptr) {
-      delete head;
-      head = nullptr;
-      return;
-    }
-    Node *cur = head;
-    while (cur->next->next != nullptr) {
-      cur = cur->next;
-    }
-    delete cur->next;
-    cur->next = nullptr;
   }
 
   void insert(int index, int data) {
-    if (index == 0) {
-      head = new Node(data, head);
-      return;
-    }
-    Node *cur = head;
-    for (int i = 0; i < index - 1; i++) {
-      if (cur == nullptr || cur->next == nullptr) {
-        throw std::out_of_range("Index out of bounds");
-      }
-      cur = cur->next;
-    }
-    if (cur == nullptr || cur->next == nullptr) {
-      throw std::out_of_range("Index out of bounds");
-    }
-    cur->next = new Node(data, cur->next);
   }
 };
 
