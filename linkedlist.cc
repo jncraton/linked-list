@@ -1,22 +1,20 @@
-#include <print>
 #include <cassert>
+#include <print>
 #include <stdexcept>
 
 class Node {
 public:
-  Node* next;
+  Node *next;
   int data;
 
-  Node(int data, Node* next = nullptr) : data(data), next(next) {}
+  Node(int data, Node *next = nullptr) : data(data), next(next) {}
 };
 
 class LinkedList {
 public:
-  Node* head;
+  Node *head;
 
-  LinkedList() {
-    head = nullptr;
-  }
+  LinkedList() { head = nullptr; }
 
   void append(int data) {
     if (head == nullptr) {
@@ -24,7 +22,7 @@ public:
       return;
     }
 
-    Node* cur = head;
+    Node *cur = head;
     while (cur->next != nullptr) {
       cur = cur->next;
     }
@@ -33,7 +31,7 @@ public:
   }
 
   int get(int index) {
-    Node* cur = head;
+    Node *cur = head;
     if (cur == nullptr) {
       throw std::out_of_range("Index out of bounds");
     }
@@ -64,7 +62,8 @@ int main() {
   try {
     ll.get(2);
     assert(false && "Should have thrown out_of_range");
-  } catch (const std::out_of_range& e) {}
+  } catch (const std::out_of_range &e) {
+  }
 
   return 0;
 }
