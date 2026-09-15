@@ -44,6 +44,41 @@ public:
 
     return cur->data;
   }
+
+  void pop() {
+    if (head == nullptr) {
+      return;
+    }
+    if (head->next == nullptr) {
+      delete head;
+      head = nullptr;
+      return;
+    }
+    Node *cur = head;
+    while (cur->next->next != nullptr) {
+      cur = cur->next;
+    }
+    delete cur->next;
+    cur->next = nullptr;
+  }
+
+  void insert(int index, int data) {
+    if (index == 0) {
+      head = new Node(data, head);
+      return;
+    }
+    Node *cur = head;
+    for (int i = 0; i < index - 1; i++) {
+      if (cur == nullptr || cur->next == nullptr) {
+        throw std::out_of_range("Index out of bounds");
+      }
+      cur = cur->next;
+    }
+    if (cur == nullptr || cur->next == nullptr) {
+      throw std::out_of_range("Index out of bounds");
+    }
+    cur->next = new Node(data, cur->next);
+  }
 };
 
 int main() {
@@ -64,6 +99,25 @@ int main() {
     assert(false && "Should have thrown out_of_range");
   } catch (const std::out_of_range &e) {
   }
+
+  ll.pop();
+  assert(("Pop last item", ll.head->next == nullptr));
+  assert(("Get first item after pop", ll.get(0) == 1));
+
+  ll.pop();
+  assert(("Pop first item", ll.head == nullptr));
+
+  ll.append(1);
+  ll.append(2);
+  ll.insert(0, 0);
+  assert(("Insert 0 at index 0", ll.get(0) == 0));
+  assert(("Insert 1 at index 1", ll.get(1) == 1));
+  assert(("Insert 2 at index 2", ll.get(2) == 2));
+
+  ll.insert(1, 100);
+  assert(("Insert 100 at index 1", ll.get(1) == 100));
+  ll.insert(2, 200);
+  assert(("Insert 200 at index 2", ll.get(2) == 200));
 
   return 0;
 }
