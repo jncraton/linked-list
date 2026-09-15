@@ -1,5 +1,7 @@
 # Link List
 
+![Linked list](https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg)
+
 A C++ project to build and test a linked list implementation.
 
 ## Learning Outcomes
