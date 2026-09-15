@@ -34,6 +34,7 @@ int main() {
   LinkedList ll;
 
   ll.append(1);
+  assert(("List has content", ll.head != nullptr));
   assert(("Single item appended", ll.head->data == 1));
 
   ll.append(2);
