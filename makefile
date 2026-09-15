@@ -11,4 +11,4 @@ test: linkedlist.cc
 	./$@
 	
 clean:
-	test
+	rm -rf linkedlist test
