@@ -1,4 +1,4 @@
-# Link List
+# Linked List
 
 ![Linked list](https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg)
 
